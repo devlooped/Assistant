@@ -142,6 +142,16 @@
     <ProjectProperty Include="PublicKeyToken" />
   </ItemGroup>
 
+  <ItemGroup Label="Throw">
+    <Using Include="System.ArgumentException" Static="true" />
+    <Using Include="System.ArgumentOutOfRangeException" Static="true" />
+    <Using Include="System.ArgumentNullException" Static="true" />
+  </ItemGroup>
+
   <Import Project="Directory.props" Condition="Exists('Directory.props')"/>
   <Import Project="Directory.props.user" Condition="Exists('Directory.props.user')" />
+
+  <!-- Implemented by SDK in .targets, guaranteeing it's overwritten. Added here since we add a DependsOnTargets to it. 
+       Covers backwards compatiblity with non-SDK projects. -->
+  <Target Name="InitializeSourceControlInformation" />
 </Project>
